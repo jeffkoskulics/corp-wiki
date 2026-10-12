@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "en-US",
-    baseUrl: process.env.WIKI_BASE_URL ?? "wiki.example.com",
+    baseUrl: process.env.WIKI_BASE_URL || "wiki.example.com",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {

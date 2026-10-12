@@ -3,3 +3,4 @@ node_modules/
 public/
 api/local.settings.json
 package-lock.json
+api/package-lock.json

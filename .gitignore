@@ -2,5 +2,3 @@ node_modules/
 .quartz/
 public/
 api/local.settings.json
-package-lock.json
-api/package-lock.json

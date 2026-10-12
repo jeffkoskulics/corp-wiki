@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit page</title>
+  <link rel="stylesheet" href="/edit/editor.css" />
+</head>
+<body>
+  <header>
+    <a href="/" class="home">Wiki</a>
+    <h1>Editing: <span id="title"></span></h1>
+    <a id="view" href="/">View page</a>
+  </header>
+  <main>
+    <div id="editor"></div>
+    <article id="preview" hidden></article>
+  </main>
+  <section id="conflict" hidden>
+    <h2>Someone else saved this page while you were editing</h2>
+    <p>Their version is below. Copy anything you need, then choose:</p>
+    <pre id="theirs"></pre>
+    <button id="takeTheirs">Load their version</button>
+    <button id="keepMine">Keep mine</button>
+  </section>
+  <footer>
+    <input id="summary" placeholder="Edit summary (what did you change?)" maxlength="200" />
+    <button id="togglePreview">Preview</button>
+    <button id="rename">Rename…</button>
+    <button id="save" class="primary">Save</button>
+    <span id="status" role="status"></span>
+  </footer>
+  <dialog id="renameDialog">
+    <form>
+      <h2>Rename page</h2>
+      <label>New name <small>(Folder/Title moves it)</small><input id="newName" required /></label>
+      <label><input type="checkbox" id="redirect" /> Leave a "moved to" page at the old name</label>
+      <div id="backlinks"></div>
+      <menu><button id="cancelRename" type="button">Cancel</button><button id="doRename" class="primary">Rename</button></menu>
+    </form>
+  </dialog>
+  <script type="module" src="/edit/editor.js"></script>
+</body>
+</html>

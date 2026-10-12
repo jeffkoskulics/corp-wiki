@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page not found</title>
+  <style>body{font:16px/1.5 Inter,system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem}a{color:#0066cc}</style>
+</head>
+<body class="missing">
+  <main>
+    <h1>This page doesn't exist yet</h1>
+    <p><a id="create" href="/edit/">Create it</a> (editors only) or go back to the <a href="/">wiki home</a>.</p>
+  </main>
+  <script>
+    const slug = decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g, ""));
+    document.getElementById("create").href = "/edit/?path=" + encodeURIComponent(slug.replace(/-/g, " "));
+  </script>
+</body>
+</html>

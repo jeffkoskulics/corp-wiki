@@ -1,0 +1,18 @@
+{
+  "name": "corp-wiki",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "bash scripts/build-site.sh",
+    "dev": "node scripts/dev-server.mjs"
+  },
+  "devDependencies": {
+    "@codemirror/autocomplete": "^6.18.4",
+    "@codemirror/lang-markdown": "^6.3.1",
+    "@codemirror/language-data": "^6.5.1",
+    "codemirror": "^6.0.1",
+    "esbuild": "^0.24.2",
+    "marked": "^15.0.6"
+  }
+}

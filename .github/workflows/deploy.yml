@@ -1,0 +1,34 @@
+name: Build and deploy wiki
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Edits from the web editor land as commits on main; serialize deploys so the newest wins.
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Quartz reads git history for "last updated" dates
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          WIKI_BASE_URL: ${{ vars.WIKI_BASE_URL }}
+      - uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: public
+          api_location: api
+          skip_app_build: true
